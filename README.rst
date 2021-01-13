@@ -6,6 +6,8 @@
 Fleet Vehicle Logbook
 =====================
 
+NOTE: in the future this module will be moved into ocs/fleet repository.
+
 Usage
 =====
 
