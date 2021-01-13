@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2021 Maik Derstappen
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="fleet_vehicle_logbook_tree_view">
+        <field name="name">fleet.vehicle.logbook.tree (in fleet_vehicle_logbook)</field>
+        <field name="model">fleet.vehicle.odometer</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_odometer_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="value" position="after">
+                <field name="units_driven" />
+            </field>
+            <field name="unit" position="after">
+                <field name="route" />
+                <field name="comments" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
