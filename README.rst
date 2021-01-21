@@ -8,6 +8,11 @@ Fleet Vehicle Logbook
 
 NOTE: in the future this module will be moved into oca/fleet repository.
 
+Adds some fields to fleet.vehicle.odometer, needed for a logbook.
+It also prevents the drive change in the vehicle model when we change the driver in the logbook (odometer) list.
+By default Odoo will change the driver in the vehicle and all your odometer entries will be updated to the new driver too.
+With this aadon this is prevented.
+
 Usage
 =====
 

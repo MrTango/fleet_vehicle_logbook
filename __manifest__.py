@@ -16,3 +16,4 @@
     "demo": ["demo/fleet_vehicle_logbook.xml",],
     "installable": True,
 }
+
