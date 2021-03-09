@@ -12,7 +12,11 @@
     "development_status": "Stable",
     "website": "https://github.com/OCA/fleet",
     "depends": ["fleet",],
-    "data": ["security/fleet_vehicle_logbook.xml", "views/fleet_vehicle_logbook.xml",],
+    "data": [
+        "security/fleet_vehicle_logbook.xml",
+        "security/ir.model.access.csv",
+        "views/fleet_vehicle_logbook.xml",
+    ],
     "demo": ["demo/fleet_vehicle_logbook.xml",],
     "installable": True,
 }

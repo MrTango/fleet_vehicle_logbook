@@ -1,19 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2021 Maik Derstappen
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
+<?xml version="1.0" ?>
 <odoo>
-
-    <!--
-    <record model="ir.model.access" id="fleet_vehicle_logbook_access_name">
-        <field name="name">fleet.vehicle.logbook access name</field>
-        <field name="model_id" ref="model_fleet_vehicle_logbook"/>
-        <field name="group_id" ref="base.group_user"/>
-        <field name="perm_read" eval="1"/>
-        <field name="perm_create" eval="0"/>
-        <field name="perm_write" eval="0"/>
-        <field name="perm_unlink" eval="0"/>
+    <record id="fleet_group_logbook_user" model="res.groups">
+        <field name="name">Logbook User</field>
+        <field name="category_id" ref="base.module_category_human_resources_fleet"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
-     -->
+
+    <data noupdate="0">
+        <record id="base.default_user" model="res.users">
+            <field name="groups_id" eval="[(4,ref('fleet_vehicle_logbook.fleet_group_logbook_user'))]"/>
+        </record>
+        <record id="fleet_rule_odometer_logbook_visibility_user" model="ir.rule">
+            <field name="name">User can only see all odometers</field>
+            <field name="model_id" ref="model_fleet_vehicle_odometer"/>
+            <field name="groups" eval="[(4, ref('fleet_group_logbook_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+            <field name="domain_force"></field>
+        </record>
+        <record id="fleet_rule_odometer_logbook_editablility_user" model="ir.rule">
+            <field name="name">User can only edit his/her odometers</field>
+            <field name="model_id" ref="model_fleet_vehicle_odometer"/>
+            <field name="groups" eval="[(4, ref('fleet_group_logbook_user'))]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        </record>
+    </data>
 
 </odoo>

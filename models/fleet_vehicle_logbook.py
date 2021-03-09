@@ -19,7 +19,7 @@ class FleetVehicleLogbook(models.Model):
         related=None,
         help="Driver of the vehicle",
         copy=False,
-        default=lambda self: self.vehicle_id.driver_id,
+        default=lambda self: self.env.user.partner_id,
     )
 
     @api.onchange('vehicle_id')
@@ -29,7 +29,7 @@ class FleetVehicleLogbook(models.Model):
         if self.driver_id:
             return
         if self.vehicle_id:
-            self.driver_id = self.vehicle_id.driver_id
+            self.driver_id = self.env.user.partner_id
 
     units_driven = fields.Float(compute="_compute_units_driven", string="Driven")
 
